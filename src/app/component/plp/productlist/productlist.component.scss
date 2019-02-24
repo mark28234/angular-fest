@@ -1,0 +1,27 @@
+.product {
+    &-heading {
+        font-weight: 700;
+        &-listIcon {
+            float: right;
+        }
+        &-gridIcon {
+            float:right;
+            padding: 0 10px;
+        }
+    }
+    &-grid {
+        &-card {
+            box-shadow: 0 0 20px lightgrey;
+            margin:10px 10px;
+            max-width:30%;
+            @media all and (max-width:991px) {
+                max-width: 44%;
+                flex: 0 0 44%;
+            }
+            padding:0px;
+            &-image {
+                margin-top: 50px;
+            }
+        }
+    }
+}
