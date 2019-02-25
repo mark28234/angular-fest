@@ -13,6 +13,7 @@ import * as productActions from '../../../actions/product.actions';
 export class ProductlistComponent implements OnInit {
   $products: Observable<Product>;
   products: any;
+  showlist: boolean;
   constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {
   }
 
@@ -20,13 +21,17 @@ export class ProductlistComponent implements OnInit {
     this.$products = this.store.select('product');
     this.$products.subscribe(result => {
       this.products = result;
-      console.log("xxx")
-      console.log(result);
-      console.log("sssssssss")
       this.cd.detectChanges();
     }
     );
     this.store.dispatch(new productActions.LoadProduct());
+  }
+  showListView() {
+    this.showlist = true;
+  }
+
+  showGridView() {
+    this.showlist = false;
   }
 
 }

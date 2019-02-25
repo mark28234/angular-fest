@@ -16,14 +16,19 @@
     }
 
     &-searchbox {
+        i {
+            position: absolute;
+            padding: 5px;
+            color: white;
+        }
         input[type=search] {
-            background: #555 url(http://hp-proliant.co.uk/qual_images/mob-search-icon.png) no-repeat 9px center;
+            background: #333333 no-repeat 9px center;
             border: solid 1px #ccc;
             padding: 9px 10px 9px 32px;
             width: 100%;
-            background-color: #ccc;
-            border-color: #333;
-            border: solid 1px #fff;
+            background-color: #333333;
+            border: solid 1px #b3b3b3;
+            color: #ffffff;
         }
        
     }
@@ -34,7 +39,31 @@
             padding:15px;
         }
         &-profile {
+            i {
+                position: absolute;
+                bottom: 0px;
+                right: 10px;
+                font-size: 25px;
+                cursor: pointer;
+            }
             display: inline-block;
+            &-image {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+            }
+            &-extraMenu {
+                position: absolute;
+                right: 0;
+                background: #333;
+                padding: 10px;
+                text-align: center;
+                border: 1px solid #fff;
+                ul {
+                    list-style: none;
+                    padding:10px;
+                }
+            }
         }
     }
 }

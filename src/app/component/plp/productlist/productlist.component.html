@@ -1,17 +1,23 @@
 <section class="product">
   <p class="product-heading">
     PRODUCTS
-    <span class="product-heading-listIcon"><i class="fa fa-list"></i></span>
-    <span class="product-heading-gridIcon"><i class="fa fa-th"></i></span>
+    <span class="product-heading-listIcon"><i (click)="showListView()" [ngClass]="{'active': showlist}" class="fa fa-list"></i></span>
+    <span class="product-heading-gridIcon"><i (click)="showGridView()" [ngClass]="{'active': !showlist}" class="fa fa-th"></i></span>
   </p>
-  <div *ngIf="products[0]" class="product-grid row">
-    <div *ngFor="let product of products" class="card product-grid-card col-md-4">
+  <div *ngIf="products[0]" [ngClass]="{'list': showlist }" class="product-grid row">
+    <div *ngFor="let product of products | paginate: { itemsPerPage: 2, currentPage: p }" class="card product-grid-card col-md-4">
       <img class="card-img-top product-grid-card-image " [src]="product.imageUrl" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{product.name}}</h5>
         <p class="card-text">Sub tagline </p>
         <p>{{product.rating}}</p>
       </div>
+    </div>
+    <div class="row col-md-12">
+      <div class="col-md-12 text-right">
+        <pagination-controls (pageChange)="p = $event">
+        </pagination-controls>
+        </div>
     </div>
   </div>
 </section>
