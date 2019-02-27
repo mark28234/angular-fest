@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { CategoryList } from '../../../models/category.model';
 import { AppState } from '../../../app.state';
 import * as CategorylActions from '../../../actions/category.actions';
+import * as productlActions from '../../../actions/product.actions';
 
 @Component({
   selector: 'app-facet',
@@ -13,6 +14,7 @@ import * as CategorylActions from '../../../actions/category.actions';
 export class FacetComponent implements OnInit {
   $categories: Observable<CategoryList>;
   categories: any;
+  categoryFilterList: string[]=[];
   constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {
   }
 
@@ -56,6 +58,15 @@ export class FacetComponent implements OnInit {
       });
     }
   }
+  categoryFilter(id) {
+    if(this.categoryFilterList.includes(id)){
+      this.categoryFilterList = this.categoryFilterList.filter( value => value!= id)
+    }else{
+      this.categoryFilterList.push(id);
+    }
+   // this.store.dispatch(new productlActions.LoadProduct('',this.categoryFilterList))
+  }
 
+  
 
 }

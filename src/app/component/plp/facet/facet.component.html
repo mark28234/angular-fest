@@ -3,13 +3,13 @@
     <h4> CATEGORIES</h4>
     <ul id="myUL">
       <li *ngFor="let category of categories">
-        <span [ngClass]="{'caret': category.children.length}">{{category.name}}</span>
+        <span (click)="categoryFilter(category.id)" [ngClass]="{'caret': category.children.length}">{{category.name}}</span>
         <ul *ngIf="category.children" class="nested">
           <li *ngFor="let category1 of category.children">
-            <span [ngClass]="{'caret': category1.children.length}"> {{category1.name}}</span>
+            <span (click)="categoryFilter(category1.id)" [ngClass]="{'caret': category1.children.length}"> {{category1.name}}</span>
             <ul *ngIf="category1.children" class="nested">
               <li *ngFor="let category2 of category1.children">
-                <span [ngClass]="{'caret': category2.children.length}"> {{category2.name}}</span>
+                <span (click)="categoryFilter(category2.id)" [ngClass]="{'caret': category2.children.length}"> {{category2.name}}</span>
               </li>
             </ul>
           </li>

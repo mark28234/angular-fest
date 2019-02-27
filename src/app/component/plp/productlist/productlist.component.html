@@ -10,7 +10,10 @@
       <div class="card-body">
         <h5 class="card-title">{{product.name}}</h5>
         <p class="card-text">Sub tagline </p>
-        <p>{{product.rating}}</p>
+        <app-rating [rating]='product.rating' [itemId]='product.id'></app-rating>
+        <button (click)="openPDP(product.id)" class="btn btn-outline-secondary btn-block"> VIEW PRODUCT</button>
+        <button class="btn btn-outline-secondary btn-block"> ADD TO CART</button>
+
       </div>
     </div>
     <div class="row col-md-12">

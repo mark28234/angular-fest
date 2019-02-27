@@ -1,0 +1,37 @@
+$color_1: #ddd;
+$color_2: #f70;
+$color_3: gold;
+$color_4: #ea0;
+
+.rating {
+	float: left;
+	&:not(:checked) {
+		>input {
+			position: absolute;
+			top: -9999px;
+			clip: rect(0,0,0,0);
+		}
+		>label {
+			float: right;
+			width: 1em;
+			padding: 0.1em;
+			overflow: hidden;
+			white-space: nowrap;
+			cursor: pointer;
+			font-size: 200%;
+			line-height: 1.2;
+			color: $color_1;
+			&:before {
+				content: '★ ';
+			}
+		}
+	}
+	>input {
+		&:checked {
+			&~label {
+				color: $color_2;
+			}
+		}
+	}
+	
+}
