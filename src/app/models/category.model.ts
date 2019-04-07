@@ -1,9 +1,9 @@
-export interface  CategoryList {
-    categoryList: Category[];
+export interface CategoryList {
+  categoryList: Category[];
 }
 
 export interface Category {
-    id: number;
-    name: string;
-    parent: number;
+  id: number;
+  name: string;
+  parent: number;
 }

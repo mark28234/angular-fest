@@ -1,20 +1,18 @@
-.pdp-container{
-    padding-top: 40px;
-    &-imagesection {
-        .card-img-top {
-            padding-top: 25px;
-        }
-        &-button {
-            margin-top: 25px;
-            margin-bottom: 25px;
-            background: rgb(194, 165, 2);
-            color: #000;
-            &:hover,&:active {
-                background: gold;
-               
-            }
-        }
+.pdp-container {
+  padding-top: 40px;
+  &-imagesection {
+    .card-img-top {
+      padding-top: 25px;
     }
-   
-
+    &-button {
+      margin-top: 25px;
+      margin-bottom: 25px;
+      background: rgb(194, 165, 2);
+      color: #000;
+      &:hover,
+      &:active {
+        background: gold;
+      }
+    }
+  }
 }

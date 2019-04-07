@@ -1,16 +1,16 @@
 .footer {
-    background: #fff;
-    padding: 15px 100px;
-    &-heading {
-        color: gold;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        &-subHeading {
-            font-size: 12px;
-            line-height: .5;
-            font-weight: 400;
-            display: block;
-        }
+  background: #fff;
+  padding: 15px 100px;
+  &-heading {
+    color: gold;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    &-subHeading {
+      font-size: 12px;
+      line-height: 0.5;
+      font-weight: 400;
+      display: block;
     }
+  }
 }

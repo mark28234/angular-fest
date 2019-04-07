@@ -8,32 +8,30 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RatingComponent implements OnInit {
   @Input() rating: number;
   @Input() itemId: string;
-  rating1:boolean;
-  rating2:boolean;
-  rating3:boolean;
-  rating4:boolean;
-  rating5:boolean;
- 
+  rating1: boolean;
+  rating2: boolean;
+  rating3: boolean;
+  rating4: boolean;
+  rating5: boolean;
 
   inputName: string;
   ngOnInit() {
     this.inputName = this.itemId + '_rating';
     //this.rating = this.rating.
-    if(this.rating == 5){
+    if (this.rating == 5) {
       this.rating5 = true;
     }
-    if(this.rating < 5 || this.rating >=4){
+    if (this.rating < 5 || this.rating >= 4) {
       this.rating4 = true;
     }
-    if(this.rating < 4 || this.rating >=3){
+    if (this.rating < 4 || this.rating >= 3) {
       this.rating3 = true;
     }
-    if(this.rating < 3 || this.rating >=2){
+    if (this.rating < 3 || this.rating >= 2) {
       this.rating2 = true;
     }
-    if(this.rating < 2 || this.rating >=1){
+    if (this.rating < 2 || this.rating >= 1) {
       this.rating1 = true;
     }
   }
-  
 }

@@ -5,14 +5,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { StoreModule } from '@ngrx/store';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 
 //effects
-import { CategoryEffects } from  './effects/category.effect';
+import { CategoryEffects } from './effects/category.effect';
 import { ProductEffects } from './effects/product.effect';
 import { ProfileEffects } from './effects/profile.effect';
-import { CartEffects} from './effects/cart.effect';
+import { CartEffects } from './effects/cart.effect';
 
 //reducers
 import { categoryReducer } from './reducers/category.reducer';
@@ -35,20 +35,39 @@ import { PdpComponent } from './component/pdp/pdp.component';
 import { CartComponent } from './component/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, PageComponent, HeaderComponent, FooterComponent, PlpComponent, FacetComponent, ProductlistComponent, RatingComponent, PdpComponent, CartComponent],
-  imports: [BrowserModule,
-     AppRoutingModule,
-     HttpClientModule,
-     EffectsModule.forRoot([CategoryEffects, ProductEffects, ProfileEffects, CartEffects]),
-     StoreModule.forRoot({
+  declarations: [
+    AppComponent,
+    PageComponent,
+    HeaderComponent,
+    FooterComponent,
+    PlpComponent,
+    FacetComponent,
+    ProductlistComponent,
+    RatingComponent,
+    PdpComponent,
+    CartComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    EffectsModule.forRoot([
+      CategoryEffects,
+      ProductEffects,
+      ProfileEffects,
+      CartEffects
+    ]),
+    StoreModule.forRoot({
       categoryList: categoryReducer,
       product: productReducer,
       profile: profileReducer,
       cart: cartReducer
     }),
     NgxPaginationModule
-    ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

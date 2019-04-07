@@ -1,13 +1,11 @@
 .cart {
-    &-products {
-        &-card {
-            flex-direction: row;
-            align-items: center;
-            &-img{
-                width:35%;
-            }
-        }
-
+  &-products {
+    &-card {
+      flex-direction: row;
+      align-items: center;
+      &-img {
+        width: 35%;
+      }
     }
-
+  }
 }

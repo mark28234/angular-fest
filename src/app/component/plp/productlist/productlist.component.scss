@@ -1,50 +1,50 @@
 .product {
-    &-heading {
-        font-weight: 700;
-        &-listIcon {
-            float: right;
-            cursor: pointer;
-            .active {
-                color: gold;
-            }
-        }
-        &-gridIcon {
-            float:right;
-            padding: 0 10px;
-            cursor: pointer;
-            .active {
-                color: gold;
-            }
-        }
+  &-heading {
+    font-weight: 700;
+    &-listIcon {
+      float: right;
+      cursor: pointer;
+      .active {
+        color: gold;
+      }
     }
-    &-grid {
-        &.list {
-            .product-grid-card {
-                max-width:100%;
-                flex: 0 0 100%;
-                align-items: center;
-                flex-direction: row;
-                &-image {
-                   width: 50%; 
-                }
-            }
-        }
-        &-card {
-            box-shadow: 0 0 20px lightgrey;
-            margin:10px 10px;
-            max-width:30%;
-            @media all and (max-width:991px) {
-                max-width: 44%;
-                flex: 0 0 44%;
-            }
-            @media all and (max-width:767px) {
-                max-width: 100%;
-                flex: 0 0 100%;
-            }
-            padding:0px;
-            &-image {
-                margin-top: 50px;
-            }
-        }
+    &-gridIcon {
+      float: right;
+      padding: 0 10px;
+      cursor: pointer;
+      .active {
+        color: gold;
+      }
     }
+  }
+  &-grid {
+    &.list {
+      .product-grid-card {
+        max-width: 100%;
+        flex: 0 0 100%;
+        align-items: center;
+        flex-direction: row;
+        &-image {
+          width: 50%;
+        }
+      }
+    }
+    &-card {
+      box-shadow: 0 0 20px lightgrey;
+      margin: 10px 10px;
+      max-width: 30%;
+      @media all and (max-width: 991px) {
+        max-width: 44%;
+        flex: 0 0 44%;
+      }
+      @media all and (max-width: 767px) {
+        max-width: 100%;
+        flex: 0 0 100%;
+      }
+      padding: 0px;
+      &-image {
+        margin-top: 50px;
+      }
+    }
+  }
 }

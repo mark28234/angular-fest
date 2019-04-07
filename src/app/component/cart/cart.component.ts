@@ -14,27 +14,29 @@ export class CartComponent implements OnInit {
   $cart: Observable<Cart>;
   cart: any;
   profile: any;
-  constructor(private activatedRoute: ActivatedRoute,  private router: Router, private store: Store<AppState>, private cd: ChangeDetectorRef) { }
-
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private store: Store<AppState>,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.store.select('profile').subscribe(profile => {
+    this.store.select('profile').subscribe((profile) => {
       this.profile = profile;
       this.cd.detectChanges();
-      if(this.profile){
-      this.store.dispatch( new cartActions.LoadCart(this.profile.id))
+      if (this.profile) {
+        this.store.dispatch(new cartActions.LoadCart(this.profile.id));
       }
     });
     this.$cart = this.store.select('cart');
-    this.$cart.subscribe(cart => {
+    this.$cart.subscribe((cart) => {
       this.cart = cart;
-      console.log(cart)
+      console.log(cart);
       this.cd.detectChanges();
-    }
-    );
+    });
   }
-  goToPlp(){
+  goToPlp() {
     this.router.navigate(['/']);
   }
-
 }

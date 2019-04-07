@@ -1,13 +1,25 @@
 <section *ngIf="productDetails" class="pdp-container row">
   <div class=" pdp-container-imagesection col-md-5">
     <div class="card">
-      <img class="card-img-top  " [src]="productDetails.imageUrl" alt="Card image cap">
+      <img
+        class="card-img-top  "
+        [src]="productDetails.imageUrl"
+        alt="Card image cap"
+      />
     </div>
-    <button (click)="addToCart()" class="btn btn-outline-secondary btn-block pdp-container-imagesection-button"> BY NOW </button>
+    <button
+      (click)="addToCart()"
+      class="btn btn-outline-secondary btn-block pdp-container-imagesection-button"
+    >
+      BY NOW
+    </button>
   </div>
   <div class=" pdp-container-detailssection col-md-7">
-    <h2>{{productDetails.name}}</h2>
-    <app-rating [rating]='productDetails.rating' [itemId]='productDetails.id'></app-rating>
+    <h2>{{ productDetails.name }}</h2>
+    <app-rating
+      [rating]="productDetails.rating"
+      [itemId]="productDetails.id"
+    ></app-rating>
     <div class="row col-md-12">
       <table>
         <tr>
@@ -16,7 +28,7 @@
               Price:
             </strong>
           </td>
-          <td>${{productDetails.price}}</td>
+          <td>${{ productDetails.price }}</td>
         </tr>
         <tr>
           <td>
@@ -24,7 +36,7 @@
               Discount:
             </strong>
           </td>
-          <td>${{productDetails.discount}}</td>
+          <td>${{ productDetails.discount }}</td>
         </tr>
         <tr>
           <td>
@@ -32,15 +44,15 @@
               In Stock:
             </strong>
           </td>
-          <td>{{productDetails.inStock}}pc</td>
+          <td>{{ productDetails.inStock }}pc</td>
         </tr>
         <tr>
           <td>
             <strong>
-              Category Name: 
+              Category Name:
             </strong>
           </td>
-          <td>&nbsp;{{productDetails.category.name}}</td>
+          <td>&nbsp;{{ productDetails.category.name }}</td>
         </tr>
       </table>
     </div>
@@ -56,9 +68,6 @@
     <ul>
       <li>500Mb Free Disk Space</li>
       <li>DVD/CD Rom Drive</li>
-     
     </ul>
-
   </div>
-
 </section>

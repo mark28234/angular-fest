@@ -1,41 +1,41 @@
 .facet {
-    box-shadow: 0 0 20px lightgrey;
+  box-shadow: 0 0 20px lightgrey;
 }
 
 /* tree structure navigation */
 $color_1: black;
 
 ul {
-	list-style-type: none;
+  list-style-type: none;
 }
 #myUL {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 .caret {
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	&::before {
-		content: "\25B6";
-		color: $color_1;
-		display: inline-block;
-		margin-right: 6px;
-	}
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &::before {
+    content: '\25B6';
+    color: $color_1;
+    display: inline-block;
+    margin-right: 6px;
+  }
 }
 .caret-down {
-	&::before {
-		-ms-transform: rotate(90deg);
-		-webkit-transform: rotate(90deg);
-		 transform: rotate(90deg);
-	}
+  &::before {
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
 }
 .nested {
-	display: none;
+  display: none;
 }
 .active {
-	display: block;
+  display: block;
 }

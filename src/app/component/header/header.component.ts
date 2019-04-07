@@ -18,32 +18,32 @@ export class HeaderComponent implements OnInit {
   profile: any;
   totalItems: any = [];
   showExtraMenu: boolean;
-  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef, private router: Router) {
-  }
+  constructor(
+    private store: Store<AppState>,
+    private cd: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-
     this.$profile = this.store.select('profile');
-    this.$profile.subscribe(result => {
+    this.$profile.subscribe((result) => {
       this.profile = result;
       this.cd.detectChanges();
-      if(this.profile) {
-        this.store.dispatch( new cartActions.LoadCart(this.profile.id));
+      if (this.profile) {
+        this.store.dispatch(new cartActions.LoadCart(this.profile.id));
       }
     });
-    this.store.select('cart').subscribe(result => {
-      if(result && result[0]){
-        this.totalItems= result;
-        console.log(this.totalItems)
+    this.store.select('cart').subscribe((result) => {
+      if (result && result[0]) {
+        this.totalItems = result;
+        console.log(this.totalItems);
       } else {
-        this.totalItems= "";
+        this.totalItems = '';
       }
       this.cd.detectChanges();
     });
 
     this.store.dispatch(new profileActions.LoadProfile(2));
-
-
   }
   showProfileMenu() {
     this.showExtraMenu = !this.showExtraMenu;
@@ -55,7 +55,9 @@ export class HeaderComponent implements OnInit {
     }
   }
   searchProduct(searchTerm) {
-    this.store.dispatch(new productActions.LoadProduct(searchTerm.target.value))
+    this.store.dispatch(
+      new productActions.LoadProduct(searchTerm.target.value)
+    );
   }
   redirectHome() {
     this.router.navigate(['/']);

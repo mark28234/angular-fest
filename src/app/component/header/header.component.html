@@ -1,21 +1,45 @@
 <section class="header row">
-  <div (click)="redirectHome()" class="header-logo col-md-3">E-Commerce
+  <div (click)="redirectHome()" class="header-logo col-md-3">
+    E-Commerce
     <span class="header-logo-subtext">platform</span>
   </div>
   <div class="header-searchbox col-md-6">
     <form class="form-inline">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input class="form-control mr-sm-2" (blur)="searchProduct($event)"  type="search" placeholder="Search" aria-label="Search">
+      <input
+        class="form-control mr-sm-2"
+        (blur)="searchProduct($event)"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
     </form>
   </div>
   <div class="header-icons col-md-3">
-    <div class="header-icons-cart"(click)="goToCart()"><span class="badge badge-light">{{totalItems.length}}</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
-    <div *ngIf="profile" class="header-icons-profile"><i (click)="showProfileMenu()" class="fa fa-caret-down"
-        aria-hidden="true"></i><img class="header-icons-profile-image" [src]="profile.profileImageUrl">
+    <div class="header-icons-cart" (click)="goToCart()">
+      <span class="badge badge-light">{{ totalItems.length }}</span
+      ><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </div>
+    <div *ngIf="profile" class="header-icons-profile">
+      <i
+        (click)="showProfileMenu()"
+        class="fa fa-caret-down"
+        aria-hidden="true"
+      ></i
+      ><img
+        class="header-icons-profile-image"
+        [src]="profile.profileImageUrl"
+      />
       <div *ngIf="showExtraMenu" class="header-icons-profile-extraMenu">
         <ul>
-          <li>Hello, {{profile.name}}</li>
-          <li>Change user:<input type="number" (blur)="changeUser($event)" placeholder="User Id"></li>
+          <li>Hello, {{ profile.name }}</li>
+          <li>
+            Change user:<input
+              type="number"
+              (blur)="changeUser($event)"
+              placeholder="User Id"
+            />
+          </li>
         </ul>
       </div>
     </div>

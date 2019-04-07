@@ -1,26 +1,58 @@
 <section class="product">
   <p class="product-heading">
     PRODUCTS
-    <span class="product-heading-listIcon"><i (click)="showListView()" [ngClass]="{'active': showlist}" class="fa fa-list"></i></span>
-    <span class="product-heading-gridIcon"><i (click)="showGridView()" [ngClass]="{'active': !showlist}" class="fa fa-th"></i></span>
+    <span class="product-heading-listIcon"
+      ><i
+        (click)="showListView()"
+        [ngClass]="{ active: showlist }"
+        class="fa fa-list"
+      ></i
+    ></span>
+    <span class="product-heading-gridIcon"
+      ><i
+        (click)="showGridView()"
+        [ngClass]="{ active: !showlist }"
+        class="fa fa-th"
+      ></i
+    ></span>
   </p>
-  <div *ngIf="products[0]" [ngClass]="{'list': showlist }" class="product-grid row">
-    <div *ngFor="let product of products | paginate: { itemsPerPage: 2, currentPage: p }" class="card product-grid-card col-md-4">
-      <img class="card-img-top product-grid-card-image " [src]="product.imageUrl" alt="Card image cap">
+  <div
+    *ngIf="products[0]"
+    [ngClass]="{ list: showlist }"
+    class="product-grid row"
+  >
+    <div
+      *ngFor="
+        let product of (products
+          | paginate: { itemsPerPage: 6, currentPage: p })
+      "
+      class="card product-grid-card col-md-4"
+    >
+      <img
+        class="card-img-top product-grid-card-image "
+        [src]="product.imageUrl"
+        alt="Card image cap"
+      />
       <div class="card-body">
-        <h5 class="card-title">{{product.name}}</h5>
-        <p class="card-text">Sub tagline </p>
-        <app-rating [rating]='product.rating' [itemId]='product.id'></app-rating>
-        <button (click)="openPDP(product.id)" class="btn btn-outline-secondary btn-block"> VIEW PRODUCT</button>
-        <button class="btn btn-outline-secondary btn-block"> ADD TO CART</button>
-
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">Sub tagline</p>
+        <app-rating
+          [rating]="product.rating"
+          [itemId]="product.id"
+        ></app-rating>
+        <button
+          (click)="openPDP(product.id)"
+          class="btn btn-outline-secondary btn-block"
+        >
+          VIEW PRODUCT
+        </button>
+        <button class="btn btn-outline-secondary btn-block">ADD TO CART</button>
       </div>
     </div>
     <div class="row col-md-12">
       <div class="col-md-12 text-right">
-        <pagination-controls (pageChange)="p = $event">
-        </pagination-controls>
-        </div>
+        <pagination-controls (pageChange)="p = $event"> </pagination-controls>
+      </div>
     </div>
   </div>
 </section>

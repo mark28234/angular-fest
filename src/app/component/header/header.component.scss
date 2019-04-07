@@ -1,76 +1,76 @@
 .header {
-    justify-content: space-around;
-    background: #333333;
-    align-items: center;
-    color: gold;
-    padding: 15px 100px;
-    &-logo {
+  justify-content: space-around;
+  background: #333333;
+  align-items: center;
+  color: gold;
+  padding: 15px 100px;
+  &-logo {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 28px;
+    &-subtext {
+      font-weight: 400;
+      display: block;
+      font-size: 12px;
+    }
+  }
+  &-searchbox {
+    i {
+      position: absolute;
+      padding: 5px;
+      color: white;
+    }
+    input[type='search'] {
+      background: #333333 no-repeat 9px center;
+      border: solid 1px #ccc;
+      padding: 9px 10px 9px 32px;
+      width: 100%;
+      background-color: #333333;
+      border: solid 1px #b3b3b3;
+      color: #ffffff;
+    }
+  }
+  &-icons {
+    text-align: right;
+    &-cart {
+      span {
+        right: 73px;
+        top: -3px;
+        font-size: 12px;
+        position: absolute;
+      }
+      display: inline-block;
+      font-size: 24px;
+      padding: 0 40px;
+      cursor: pointer;
+    }
+    &-profile {
+      i {
+        position: absolute;
+        bottom: 0px;
+        right: 10px;
+        font-size: 25px;
         cursor: pointer;
-        font-weight: 600;
-        font-size: 28px;
-        &-subtext {
-            font-weight: 400;
-            display: block;
-            font-size: 12px;
+      }
+      display: inline-block;
+      &-image {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+      &-extraMenu {
+        z-index: 999;
+        position: absolute;
+        right: 0;
+        background: #333;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #fff;
+        ul {
+          list-style: none;
+          padding: 10px;
         }
+      }
     }
-    &-searchbox {
-        i {
-            position: absolute;
-            padding: 5px;
-            color: white;
-        }
-        input[type=search] {
-            background: #333333 no-repeat 9px center;
-            border: solid 1px #ccc;
-            padding: 9px 10px 9px 32px;
-            width: 100%;
-            background-color: #333333;
-            border: solid 1px #b3b3b3;
-            color: #ffffff;
-        }
-    }
-    &-icons {
-        text-align: right;
-        &-cart {
-            span {
-                right: 73px;
-                top: -3px;
-                font-size: 12px;
-                position: absolute;
-            }
-            display:inline-block;
-            font-size: 24px;
-            padding: 0 40px;
-            cursor: pointer;
-        }
-        &-profile {
-            i {
-                position: absolute;
-                bottom: 0px;
-                right: 10px;
-                font-size: 25px;
-                cursor: pointer;
-            }
-            display: inline-block;
-            &-image {
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-            }
-            &-extraMenu {
-                z-index: 999;
-                position: absolute;
-                right: 0;
-                background: #333;
-                padding: 10px;
-                text-align: center;
-                border: 1px solid #fff;
-                ul {
-                    list-style: none;
-                    padding: 10px;
-                }
-            }
-        }
-    }
+  }
 }
