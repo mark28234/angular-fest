@@ -1,0 +1,29 @@
+<section class="cart">
+  <h2> SHOPPING CART</h2>
+  <div *ngIf="cart && cart[0]" class="cart-products">
+    <div *ngFor="let car of cart; let i=index;" class="card cart-products-card">
+      <img class="card-img-top cart-products-card-img" [src]="car.product.imageUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{car.product.name}}</h5>
+
+        <app-rating [rating]='car.product.rating' [itemId]='i'></app-rating>
+        <div class="row col-md-12">
+          <input placeholder="quantity" type="number"> * ${{car.product.price}}= {{car.product.price * i}}
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 text-right">
+      <p>Order Total: xxxxx</p>
+      <p>Delivery Charges: xxx</p>
+      <hr>
+      <p>Grand Total: xxxxx</p>
+    </div>
+    <div class="col-md-12 text-right">
+        <button (click)="goToPlp()" class="btn btn-outline-secondary "> CONTINUE SHOPPING</button>
+        <button  class="btn btn-outline-secondary "> PROCEED TO CHECKOUT</button>
+      </div>
+  </div>
+
+
+</section>
