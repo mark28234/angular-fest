@@ -1,27 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-import { StoreModule } from '@ngrx/store';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { EffectsModule } from '@ngrx/effects';
-
-//effects
-import { CategoryEffects } from './effects/category.effect';
-import { ProductEffects } from './effects/product.effect';
-import { ProfileEffects } from './effects/profile.effect';
-import { CartEffects } from './effects/cart.effect';
-
-//reducers
-import { categoryReducer } from './reducers/category.reducer';
-import { productReducer } from './reducers/product.reducer';
-import { profileReducer } from './reducers/profile.reducer';
-import { cartReducer } from './reducers/cart.reducer';
-
-import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
-
 import { PageComponent } from './component/page/page.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -50,24 +32,10 @@ import { CartComponent } from './component/cart/cart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    EffectsModule.forRoot([
-      CategoryEffects,
-      ProductEffects,
-      ProfileEffects,
-      CartEffects
-    ]),
-    StoreModule.forRoot({
-      categoryList: categoryReducer,
-      product: productReducer,
-      profile: profileReducer,
-      cart: cartReducer
-    }),
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

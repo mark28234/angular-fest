@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { PlpComponent } from './component/plp/plp.component';
 import { PdpComponent } from './component/pdp/pdp.component';
 import { CartComponent } from './component/cart/cart.component';

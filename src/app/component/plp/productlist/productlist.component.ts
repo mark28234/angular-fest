@@ -1,10 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
 import { Product } from '../../../models/product.model';
-import { AppState } from '../../../app.state';
-import * as productActions from '../../../actions/product.actions';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-productlist',
@@ -12,23 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./productlist.component.scss']
 })
 export class ProductlistComponent implements OnInit {
-  $products: Observable<Product>;
-  products: any;
+  products: Product[] = [];
   showlist: boolean;
   constructor(
-    private store: Store<AppState>,
-    private cd: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private productService: ProductService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
-    this.$products = this.store.select('product');
-    this.$products.subscribe((result) => {
-      this.products = result;
-      this.cd.detectChanges();
-    });
-    this.store.dispatch(new productActions.LoadProduct());
+    this.productService
+      .getProducts()
+      .subscribe((products) => (this.products = products));
   }
+
   showListView() {
     this.showlist = true;
   }
@@ -36,7 +32,14 @@ export class ProductlistComponent implements OnInit {
   showGridView() {
     this.showlist = false;
   }
+
   openPDP(id) {
     this.router.navigate(['/pdp/' + id]);
+  }
+
+  addToCart(id) {
+    this.cartService
+      .addItemToCart(1, id, 1)
+      .subscribe((result) => console.log(result));
   }
 }

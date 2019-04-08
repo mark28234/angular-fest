@@ -1,10 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { CategoryList } from '../../../models/category.model';
-import { AppState } from '../../../app.state';
-import * as CategorylActions from '../../../actions/category.actions';
-import * as productlActions from '../../../actions/product.actions';
+import { Category } from '../../../models/category.model';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-facet',
@@ -12,23 +9,18 @@ import * as productlActions from '../../../actions/product.actions';
   styleUrls: ['./facet.component.scss']
 })
 export class FacetComponent implements OnInit {
-  $categories: Observable<CategoryList>;
-  categories: any;
+  categories: Category[];
   categoryFilterList: string[] = [];
-  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
-    this.$categories = this.store.select('categoryList');
-    this.$categories.subscribe((result) => {
-      this.categories = result;
-      this.list_to_tree(result);
-      this.cd.detectChanges();
-      this.treeStructureMenu();
+    this.categoryService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+      this.list_to_tree(this.categories);
     });
-    this.store.dispatch(new CategorylActions.LoadCategory());
   }
   list_to_tree(list) {
-    var map = {},
+    let map = {},
       node,
       roots = [],
       i;
@@ -66,6 +58,5 @@ export class FacetComponent implements OnInit {
     } else {
       this.categoryFilterList.push(id);
     }
-    // this.store.dispatch(new productlActions.LoadProduct('',this.categoryFilterList))
   }
 }

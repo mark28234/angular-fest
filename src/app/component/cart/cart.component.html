@@ -2,30 +2,38 @@
   <h2>SHOPPING CART</h2>
   <div *ngIf="cart && cart[0]" class="cart-products">
     <div
-      *ngFor="let car of cart; let i = index"
+      *ngFor="let cartItem of cart; let i = index"
       class="card cart-products-card"
     >
       <img
         class="card-img-top cart-products-card-img"
-        [src]="car.product.imageUrl"
+        [src]="cartItem.product.imageUrl"
         alt="Card image cap"
       />
       <div class="card-body">
-        <h5 class="card-title">{{ car.product.name }}</h5>
+        <h5 class="card-title">{{ cartItem.product.name }}</h5>
 
-        <app-rating [rating]="car.product.rating" [itemId]="i"></app-rating>
+        <app-rating
+          [rating]="cartItem.product.rating"
+          [itemId]="i"
+        ></app-rating>
         <div class="row col-md-12">
-          <input placeholder="quantity" type="number" /> * ${{
-            car.product.price
-          }}= {{ car.product.price * i }}
+          <input
+            placeholder="quantity"
+            type="number"
+            [value]="cartItem.quantity"
+          />
+          * {{ cartItem.product.price }} = ${{
+            cartItem.product.price * cartItem.quantity
+          }}
         </div>
       </div>
     </div>
     <div class="col-md-12 text-right">
-      <p>Order Total: xxxxx</p>
-      <p>Delivery Charges: xxx</p>
+      <p>Order Total: ${{ getTotalPrice() }}</p>
+      <p>Delivery Charges: $10</p>
       <hr />
-      <p>Grand Total: xxxxx</p>
+      <p>Grand Total: ${{ getTotalPrice() + 10 }}</p>
     </div>
     <div class="col-md-12 text-right">
       <button (click)="goToPlp()" class="btn btn-outline-secondary ">

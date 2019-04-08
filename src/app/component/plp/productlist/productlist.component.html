@@ -1,23 +1,23 @@
 <section class="product">
   <p class="product-heading">
     PRODUCTS
-    <span class="product-heading-listIcon"
-      ><i
+    <span class="product-heading-listIcon">
+      <i
         (click)="showListView()"
         [ngClass]="{ active: showlist }"
         class="fa fa-list"
-      ></i
-    ></span>
-    <span class="product-heading-gridIcon"
-      ><i
+      ></i>
+    </span>
+    <span class="product-heading-gridIcon">
+      <i
         (click)="showGridView()"
         [ngClass]="{ active: !showlist }"
         class="fa fa-th"
-      ></i
-    ></span>
+      ></i>
+    </span>
   </p>
   <div
-    *ngIf="products[0]"
+    *ngIf="products.length > 0"
     [ngClass]="{ list: showlist }"
     class="product-grid row"
   >
@@ -46,7 +46,7 @@
         >
           VIEW PRODUCT
         </button>
-        <button class="btn btn-outline-secondary btn-block">ADD TO CART</button>
+        <button class="btn btn-outline-secondary btn-block" (click)="addToCart(product.id)">ADD TO CART</button>
       </div>
     </div>
     <div class="row col-md-12">

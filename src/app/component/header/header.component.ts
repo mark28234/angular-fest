@@ -1,12 +1,8 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
 import { Profile } from '../../models/profile.model';
-import { AppState } from '../../app.state';
-import * as profileActions from '../../actions/profile.actions';
-import * as productActions from '../../actions/product.actions';
-import * as cartActions from '../../actions/cart.actions';
 import { Router } from '@angular/router';
+import { ProfileService } from 'src/app/services/profile.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -14,54 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  $profile: Observable<Profile>;
-  profile: any;
-  totalItems: any = [];
+  user: Profile;
+  totalItems: number = 0;
   showExtraMenu: boolean;
   constructor(
-    private store: Store<AppState>,
-    private cd: ChangeDetectorRef,
-    private router: Router
+    private profileService: ProfileService,
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
-    this.$profile = this.store.select('profile');
-    this.$profile.subscribe((result) => {
-      this.profile = result;
-      this.cd.detectChanges();
-      if (this.profile) {
-        this.store.dispatch(new cartActions.LoadCart(this.profile.id));
-      }
+    this.profileService.getProfile().subscribe((profile) => {
+      this.user = profile;
     });
-    this.store.select('cart').subscribe((result) => {
-      if (result && result[0]) {
-        this.totalItems = result;
-        console.log(this.totalItems);
-      } else {
-        this.totalItems = '';
-      }
-      this.cd.detectChanges();
+    this.cartService.getCart(1).subscribe((cart) => {
+      this.totalItems = cart.length || 0;
     });
-
-    this.store.dispatch(new profileActions.LoadProfile(2));
   }
+
   showProfileMenu() {
     this.showExtraMenu = !this.showExtraMenu;
   }
-  changeUser(userId) {
-    if (userId) {
-      this.store.dispatch(new profileActions.LoadProfile(userId.target.value));
-      this.showExtraMenu = false;
-    }
-  }
-  searchProduct(searchTerm) {
-    this.store.dispatch(
-      new productActions.LoadProduct(searchTerm.target.value)
-    );
-  }
+
+  changeUser(userId) {}
+
+  searchProduct(searchTerm) {}
+
   redirectHome() {
     this.router.navigate(['/']);
   }
+
   goToCart() {
     this.router.navigate(['cart']);
   }

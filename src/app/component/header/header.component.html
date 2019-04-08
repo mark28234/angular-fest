@@ -17,32 +17,26 @@
   </div>
   <div class="header-icons col-md-3">
     <div class="header-icons-cart" (click)="goToCart()">
-      <span class="badge badge-light">{{ totalItems.length }}</span
+      <span class="badge badge-light">{{ totalItems }}</span
       ><i class="fa fa-shopping-cart" aria-hidden="true"></i>
     </div>
-    <div *ngIf="profile" class="header-icons-profile">
+    <div *ngIf="user" class="header-icons-profile">
       <i
         (click)="showProfileMenu()"
         class="fa fa-caret-down"
         aria-hidden="true"
-      ></i
-      ><img
+      ></i>
+      <img
         class="header-icons-profile-image"
-        [src]="profile.profileImageUrl"
+        alt="profile-image"
+        [src]="user.profileImageUrl"
       />
       <div *ngIf="showExtraMenu" class="header-icons-profile-extraMenu">
         <ul>
-          <li>Hello, {{ profile.name }}</li>
-          <li>
-            Change user:<input
-              type="number"
-              (blur)="changeUser($event)"
-              placeholder="User Id"
-            />
-          </li>
+          <li>Hello, {{ user.name }}</li>
         </ul>
       </div>
     </div>
-    <div *ngIf="!profile" class="header-icons-profile">Login</div>
+    <div *ngIf="!user" class="header-icons-profile">Login</div>
   </div>
 </section>
