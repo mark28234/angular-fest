@@ -14,4 +14,9 @@ export class ProductService {
     let url = `${AppConfig.API_END_POINT}product`;
     return this.apiService.get(url);
   }
+
+  getProductDetails(id) {
+    let url = `${AppConfig.API_END_POINT}product/description/${id}`;
+    return this.apiService.get(url);
+  }
 }

@@ -3,22 +3,22 @@
     <div class="card">
       <img
         class="card-img-top  "
-        [src]="productDetails.imageUrl"
+        [src]="productDetails.product.imageUrl"
         alt="Card image cap"
       />
     </div>
     <button
-      (click)="addToCart()"
+      (click)="addToCart(productDetails.product.id)"
       class="btn btn-outline-secondary btn-block pdp-container-imagesection-button"
     >
-      BY NOW
+      BUY NOW
     </button>
   </div>
   <div class=" pdp-container-detailssection col-md-7">
-    <h2>{{ productDetails.name }}</h2>
+    <h2>{{ productDetails.product.name }}</h2>
     <app-rating
-      [rating]="productDetails.rating"
-      [itemId]="productDetails.id"
+      [rating]="productDetails.product.rating"
+      [itemId]="productDetails.product.id"
     ></app-rating>
     <div class="row col-md-12">
       <table>
@@ -28,7 +28,7 @@
               Price:
             </strong>
           </td>
-          <td>${{ productDetails.price }}</td>
+          <td>${{ productDetails.product.price }}</td>
         </tr>
         <tr>
           <td>
@@ -36,7 +36,7 @@
               Discount:
             </strong>
           </td>
-          <td>${{ productDetails.discount }}</td>
+          <td>${{ productDetails.product.discount }}</td>
         </tr>
         <tr>
           <td>
@@ -44,7 +44,7 @@
               In Stock:
             </strong>
           </td>
-          <td>{{ productDetails.inStock }}pc</td>
+          <td>{{ productDetails.product.inStock }}pc</td>
         </tr>
         <tr>
           <td>
@@ -52,7 +52,7 @@
               Category Name:
             </strong>
           </td>
-          <td>&nbsp;{{ productDetails.category.name }}</td>
+          <td>&nbsp;{{ productDetails.product.category.name }}</td>
         </tr>
       </table>
     </div>
